@@ -10,8 +10,11 @@ def start(bot, update):
 def caps(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
 
+# def echo(bot, update):
+#     update.effective_message.reply_text(update.effective_message.text)
+
 def echo(bot, update):
-    update.effective_message.reply_text(update.effective_message.text)
+    bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
 
 def error(bot, update, error):
     logger.warning('Update "%s" caused error "%s"', update, error)
