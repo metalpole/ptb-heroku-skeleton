@@ -1,5 +1,5 @@
 ## Progress
-**@stablegeniusbot**
+**[@stablegeniusbot](https://web.telegram.org/#/im?p=@stablegeniusbot)**
 
 1) Only basic bot is currently deployed on Heroku
 2) Next steps:
