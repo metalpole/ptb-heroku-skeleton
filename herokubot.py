@@ -35,7 +35,7 @@ if __name__ == "__main__":
     dp = updater.dispatcher
     # Add handlers
     dp.add_handler(CommandHandler('start', start))       # Handles /commands
-    dp.add_handler(CommandHandler('randomtweet', start))
+    dp.add_handler(CommandHandler('randomtweet', random))
     dp.add_handler(MessageHandler(Filters.text, echo))   # Handles messages
     dp.add_error_handler(error)
 
