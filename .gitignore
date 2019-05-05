@@ -60,3 +60,8 @@ target/
 .idea/
 
 pushingcode.txt
+
+__pycache__
+models/
+checkpoint
+samples
