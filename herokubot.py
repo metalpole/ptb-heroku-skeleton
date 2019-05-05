@@ -7,12 +7,8 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 def start(bot, update):
     update.effective_message.reply_text("Hi!")
 
-def random(bot, update):
-    update.effective_message.reply_text("Random!")
-
 def caps(bot, update):
-    text_caps = ' '.join(context.args).upper()
-    update.effective_message.reply_text(text_caps)
+    bot.send_message(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
 
 def echo(bot, update):
     update.effective_message.reply_text(update.effective_message.text)
@@ -39,7 +35,6 @@ if __name__ == "__main__":
     dp = updater.dispatcher
     # Add handlers
     dp.add_handler(CommandHandler('start', start))       # Handles /commands
-    dp.add_handler(CommandHandler('randomtweet', random))
     dp.add_handler(CommandHandler('caps', caps))
     dp.add_handler(MessageHandler(Filters.text, echo))   # Handles messages
     dp.add_error_handler(error)

@@ -7,6 +7,8 @@
    * Integrate with default GPT-2 language model
    * Fine-tune language model
 
+Using version 11.1.0
+
 -------------------------------------------------------------------------------------------------------------------------
 **Forked from forked from Eldinnie/ptb-heroku-skeleton**
 
