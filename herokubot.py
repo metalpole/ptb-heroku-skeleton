@@ -10,6 +10,10 @@ def start(bot, update):
 def random(bot, update):
     update.effective_message.reply_text("Random!")
 
+def caps(bot, update):
+    text_caps = ' '.join(context.args).upper()
+    update.effective_message.reply_text(text_caps)
+
 def echo(bot, update):
     update.effective_message.reply_text(update.effective_message.text)
 
@@ -36,6 +40,7 @@ if __name__ == "__main__":
     # Add handlers
     dp.add_handler(CommandHandler('start', start))       # Handles /commands
     dp.add_handler(CommandHandler('randomtweet', random))
+    dp.add_handler(CommandHandler('caps', caps))
     dp.add_handler(MessageHandler(Filters.text, echo))   # Handles messages
     dp.add_error_handler(error)
 
