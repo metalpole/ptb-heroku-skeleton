@@ -44,7 +44,7 @@ if __name__ == "__main__":
     dp.add_handler(CommandHandler('start', start))       # Handles /commands
     dp.add_handler(CommandHandler('randomtweet', randomtweet))
     # dp.add_handler(MessageHandler(Filters.text, echo)) # Handles all text
-    dp.add_handler(MessageHandler(Filters.regex(r'\S'), echo))      # Handles messages which are characters
+    #dp.add_handler(MessageHandler(Filters.regex(r'\S'), echo))      # Handles messages which are characters
     dp.add_handler(MessageHandler(Filters.regex(r'\d*'), number))   # Filter message
     dp.add_error_handler(error)
 
