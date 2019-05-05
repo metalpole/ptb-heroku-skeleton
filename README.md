@@ -1,3 +1,10 @@
+1) Only basic bot is currently deployed on Heroku
+2) Next steps:
+   * Use python-telegram-bot API to create my own custom message handling functions
+   * Integrate with default GPT-2 language model
+   * Fine-tune language model
+
+-------------------------------------------------------------------------------------------------------------------------
 Forked from forked from Eldinnie/ptb-heroku-skeleton
 
 ## [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot/) on [Heroku](https://www.heroku.com/)
