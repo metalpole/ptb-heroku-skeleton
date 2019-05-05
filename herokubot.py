@@ -7,6 +7,8 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 def start(bot, update):
     update.effective_message.reply_text("Hi!")
 
+def random(bot, update):
+    update.effective_message.reply_text("Random!")
 
 def echo(bot, update):
     update.effective_message.reply_text(update.effective_message.text)
@@ -32,8 +34,9 @@ if __name__ == "__main__":
     updater = Updater(TOKEN)
     dp = updater.dispatcher
     # Add handlers
-    dp.add_handler(CommandHandler('start', start))
-    dp.add_handler(MessageHandler(Filters.text, echo))
+    dp.add_handler(CommandHandler('start', start))       # Handles /commands
+    dp.add_handler(CommandHandler('randomtweet', start))
+    dp.add_handler(MessageHandler(Filters.text, echo))   # Handles messages
     dp.add_error_handler(error)
 
     # Start the webhook
