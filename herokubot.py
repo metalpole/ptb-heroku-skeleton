@@ -3,15 +3,14 @@ import os
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-
-def start(bot, update):
-    update.effective_message.reply_text("Hi!")
-
-def caps(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
-
+# Original code
+# def start(bot, update):
+#     update.effective_message.reply_text("Hi!")
 # def echo(bot, update):
 #     update.effective_message.reply_text(update.effective_message.text)
+
+def start(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, text="I have a very good brain")
 
 def echo(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
@@ -38,7 +37,6 @@ if __name__ == "__main__":
     dp = updater.dispatcher
     # Add handlers
     dp.add_handler(CommandHandler('start', start))       # Handles /commands
-    dp.add_handler(CommandHandler('caps', caps))
     dp.add_handler(MessageHandler(Filters.text, echo))   # Handles messages
     dp.add_error_handler(error)
 
