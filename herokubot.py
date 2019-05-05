@@ -12,6 +12,9 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 def start(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="I have a very good brain")
 
+def randomtweet(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, text='Testing random tweet')
+
 def echo(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=update.message.text*2)
 
@@ -37,6 +40,7 @@ if __name__ == "__main__":
     dp = updater.dispatcher
     # Add handlers
     dp.add_handler(CommandHandler('start', start))       # Handles /commands
+    dp.add_handler(CommandHandler('randomtweet', randomtweet))
     dp.add_handler(MessageHandler(Filters.text, echo))   # Handles messages
     dp.add_error_handler(error)
 
