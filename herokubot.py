@@ -13,7 +13,7 @@ def start(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="I have a very good brain")
 
 def echo(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
+    bot.send_message(chat_id=update.message.chat_id, text=update.message.text*2)
 
 def error(bot, update, error):
     logger.warning('Update "%s" caused error "%s"', update, error)
