@@ -16,7 +16,7 @@ def randomtweet(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text='Testing random tweet')
 
 def echo(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text=update.message.text*2)
+    bot.send_message(chat_id=update.message.chat_id, text=update.message.text.upper())
 
 def error(bot, update, error):
     logger.warning('Update "%s" caused error "%s"', update, error)
@@ -31,8 +31,7 @@ if __name__ == "__main__":
     PORT = os.environ.get('PORT')
 
     # Enable logging
-    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                        level=logging.INFO)
+    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
     logger = logging.getLogger(__name__)
 
     # Set up the Updater
@@ -45,8 +44,6 @@ if __name__ == "__main__":
     dp.add_error_handler(error)
 
     # Start the webhook
-    updater.start_webhook(listen="0.0.0.0",
-                          port=int(PORT),
-                          url_path=TOKEN)
+    updater.start_webhook(listen="0.0.0.0", port=int(PORT), url_path=TOKEN)
     updater.bot.setWebhook("https://{}.herokuapp.com/{}".format(NAME, TOKEN))
     updater.idle()
