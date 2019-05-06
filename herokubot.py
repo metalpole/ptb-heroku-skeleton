@@ -1,5 +1,6 @@
 import logging
 import os
+import numpy as np
 import subprocess
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
@@ -14,8 +15,10 @@ def echo(bot, update):
 
 def gpt(bot, update):
     try:
-        subfile_output = subprocess.run('python src/generate_unconditional_samples.py --nsamples=1 --length=30 --temperature=0.9 --top_k=30', shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
-        bot.send_message(chat_id=update.message.chat_id, text=subfile_output)
+        subprocess.run('python3 -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl', shell=True)
+        #subfile_output = subprocess.run('python3 src/generate_unconditional_samples.py --nsamples=1 --length=30 --temperature=0.9 --top_k=30', shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
+        #bot.send_message(chat_id=update.message.chat_id, text=subfile_output)
+        bot.send_message(chat_id=update.message.chat_id, text='tf installed')
     except:
         bot.send_message(chat_id=update.message.chat_id, text="Exception")    
 
