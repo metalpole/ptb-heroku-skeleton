@@ -22,7 +22,10 @@ def number(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="This is a number.")
 
 def test(bot, update):
-    os.system('subfile.py')
+    try:
+        os.system('subfile.py')
+    except:
+        bot.send_message(chat_id=update.message.chat_id, text="Exception")
 
 def error(bot, update, error):
     logger.warning('Update "%s" caused error "%s"', update, error)
