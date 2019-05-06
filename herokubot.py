@@ -1,14 +1,7 @@
 import logging
 import os
 import subprocess
-
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-
-# Original code
-# def start(bot, update):
-#     update.effective_message.reply_text("Hi!")
-# def echo(bot, update):
-#     update.effective_message.reply_text(update.effective_message.text)
 
 def start(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="I have a very good brain")
@@ -19,12 +12,18 @@ def randomtweet(bot, update):
 def echo(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text=update.message.text.upper())
 
+def gpt(bot, update):
+    try:
+        subfile_output = subprocess.run('python src/generate_unconditional_samples.py --nsamples=1 --length=30 --temperature=0.9 --top_k=30', shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
+        bot.send_message(chat_id=update.message.chat_id, text=subfile_output)
+    except:
+        bot.send_message(chat_id=update.message.chat_id, text="Exception")    
+
 def number(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="This is a number.")
 
 def test(bot, update):
     try:
-        #os.system('subfile.py')
         subfile_output = subprocess.run('python subfile.py', shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
         bot.send_message(chat_id=update.message.chat_id, text=subfile_output)
     except:
@@ -52,8 +51,7 @@ if __name__ == "__main__":
     # Add handlers
     dp.add_handler(CommandHandler('start', start))       # Handles /commands
     dp.add_handler(CommandHandler('randomtweet', randomtweet))
-    dp.add_handler(MessageHandler(Filters.text, test)) # Handles all text
-    # dp.add_handler(MessageHandler(Filters.regex(r'\S'), echo))      # Handles messages which are characters
+    dp.add_handler(MessageHandler(Filters.text, gpt)) # Handles all text
     # dp.add_handler(MessageHandler(Filters.regex(r'\d*'), number))   # Filter message
     dp.add_error_handler(error)
 
