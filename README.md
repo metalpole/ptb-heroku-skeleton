@@ -2,12 +2,13 @@
 **[@stablegeniusbot](https://web.telegram.org/#/im?p=@stablegeniusbot)**
 
 1) Only basic bot is currently deployed on Heroku
+2) Managed to customize functions, and get bot to trigger subprocess and return CLI output back to telegram
 2) Next steps:
-   * Use python-telegram-bot API to create my own custom message handling functions
-   * Integrate with default GPT-2 language model
+   * Get GPT model to run in cloud
    * Fine-tune language model
 
 Using version 11.1.0
+**Update: Moving over to Google App Engine**
 
 -------------------------------------------------------------------------------------------------------------------------
 **Forked from forked from Eldinnie/ptb-heroku-skeleton**
