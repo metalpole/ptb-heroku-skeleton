@@ -24,6 +24,7 @@ def number(bot, update):
 def test(bot, update):
     try:
         os.system('subfile.py')
+        bot.send_message(chat_id=update.message.chat_id, text="subfile.py successfully ran")
     except:
         bot.send_message(chat_id=update.message.chat_id, text="Exception")
 
