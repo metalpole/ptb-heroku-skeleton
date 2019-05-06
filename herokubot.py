@@ -15,11 +15,11 @@ def echo(bot, update):
 
 def gpt(bot, update):
     try:
-        bot.send_message(chat_id=update.message.chat_id, text='Running subprocesses')
-        subprocess.run('python3 -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl', shell=True)
-        #subfile_output = subprocess.run('python3 src/generate_unconditional_samples.py --nsamples=1 --length=30 --temperature=0.9 --top_k=30', shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
-        #bot.send_message(chat_id=update.message.chat_id, text=subfile_output)
-        bot.send_message(chat_id=update.message.chat_id, text='tf installed')
+        bot.send_message(chat_id=update.message.chat_id, text='Running subprocess')
+        #subprocess.run('python3 -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl', shell=True)
+        subfile_output = subprocess.run('python3 subfile.py', shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
+        bot.send_message(chat_id=update.message.chat_id, text=subfile_output)
+        #bot.send_message(chat_id=update.message.chat_id, text='tf installed')
     except:
         bot.send_message(chat_id=update.message.chat_id, text="Exception")    
 
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     # Add handlers
     dp.add_handler(CommandHandler('start', start))       # Handles /commands
     dp.add_handler(CommandHandler('randomtweet', randomtweet))
-    dp.add_handler(MessageHandler(Filters.text, echo)) # Handles all text
+    dp.add_handler(MessageHandler(Filters.text, gpt)) # Handles all text
     # dp.add_handler(MessageHandler(Filters.regex(r'\d*'), number))   # Filter message
     dp.add_error_handler(error)
 
