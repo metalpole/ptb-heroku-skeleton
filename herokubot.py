@@ -21,6 +21,9 @@ def echo(bot, update):
 def number(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="This is a number.")
 
+def test(bot, update):
+    os.system('subfile.py')
+
 def error(bot, update, error):
     logger.warning('Update "%s" caused error "%s"', update, error)
 
@@ -43,9 +46,9 @@ if __name__ == "__main__":
     # Add handlers
     dp.add_handler(CommandHandler('start', start))       # Handles /commands
     dp.add_handler(CommandHandler('randomtweet', randomtweet))
-    # dp.add_handler(MessageHandler(Filters.text, echo)) # Handles all text
-    #dp.add_handler(MessageHandler(Filters.regex(r'\S'), echo))      # Handles messages which are characters
-    dp.add_handler(MessageHandler(Filters.regex(r'\d*'), number))   # Filter message
+    dp.add_handler(MessageHandler(Filters.text, test)) # Handles all text
+    # dp.add_handler(MessageHandler(Filters.regex(r'\S'), echo))      # Handles messages which are characters
+    # dp.add_handler(MessageHandler(Filters.regex(r'\d*'), number))   # Filter message
     dp.add_error_handler(error)
 
     # Start the webhook
