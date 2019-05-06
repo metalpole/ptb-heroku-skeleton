@@ -25,7 +25,7 @@ def number(bot, update):
 def test(bot, update):
     try:
         #os.system('subfile.py')
-        subfile_output = subprocess.run('subfile.py', check=True, capture_output=True, stdout=PIPE).stdout
+        subfile_output = subprocess.run('subfile.py', check=True, stdout=PIPE).stdout
         bot.send_message(chat_id=update.message.chat_id, text=subfile_output)
     except:
         bot.send_message(chat_id=update.message.chat_id, text="Exception")
