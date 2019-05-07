@@ -15,23 +15,16 @@ def echo(bot, update):
 
 def gpt(bot, update):
     try:
+        user_message = update.message.text
         bot.send_message(chat_id=update.message.chat_id, text='Running subprocess')
         #subprocess.run('python3 -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.12.0-py3-none-any.whl', shell=True)
         subfile_output = subprocess.run('python3 subfile.py', shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
         bot.send_message(chat_id=update.message.chat_id, text=subfile_output)
-        #bot.send_message(chat_id=update.message.chat_id, text='tf installed')
     except:
         bot.send_message(chat_id=update.message.chat_id, text="Exception")    
 
 def number(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text="This is a number.")
-
-def test(bot, update):
-    try:
-        subfile_output = subprocess.run('python subfile.py', shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
-        bot.send_message(chat_id=update.message.chat_id, text=subfile_output)
-    except:
-        bot.send_message(chat_id=update.message.chat_id, text="Exception")
 
 def error(bot, update, error):
     logger.warning('Update "%s" caused error "%s"', update, error)
